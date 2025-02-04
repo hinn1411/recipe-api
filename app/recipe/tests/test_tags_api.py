@@ -24,7 +24,7 @@ class PublicTagsAPITests(TestCase):
     """Test unauthenticated API requests."""
 
     def setUp(self):
-        self.client = APIClient
+        self.client = APIClient()
 
     def test_auth_required(self):
         """Test auth is required for retrieving tags."""
@@ -36,7 +36,7 @@ class PrivateTagsAPITests(TestCase):
     """Test authenticated API requests."""
 
     def setUp(self):
-        user = create_user()
+        self.user = create_user()
         self.client = APIClient()
         self.client.force_authenticate(self.user)
 
